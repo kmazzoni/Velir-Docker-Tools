@@ -1,0 +1,21 @@
+version: "2.4"
+services:
+  node:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-node:${NODE_IMAGE_VERSION:-latest}
+    build:
+      context: ./build/node
+      args:
+        BASE_IMAGE: mcr.microsoft.com/windows/nanoserver:1809
+        NODE_INSTALLER_IMAGE: mcr.microsoft.com/windows/servercore:1803
+        NODE_VERSION: v14.17.6
+    working_dir: C:\html
+    scale: 0
+
+  jmeter:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-jmeter:${JMETER_IMAGE_VERSION:-latest}
+    build:
+      context: ./build/jmeter
+      args:
+        BASE_IMAGE: openjdk:8-windowsservercore
+        JMETER_VERSION: 5.4.1
+    scale: 0

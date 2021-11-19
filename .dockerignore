@@ -1,0 +1,18 @@
+# folders
+.git
+.gitignore
+.vs
+.vscode
+build
+docker
+packages
+src/**/bin/
+**/obj/
+**/out/
+
+# files
+*Dockerfile
+docker-compose*
+**/*.md
+#*.ps1
+*.bak
